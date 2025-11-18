@@ -1,17 +1,37 @@
 *{
     padding: 0;
     margin: 0;
+    margin-top: 0;
 }
-section{
+body{
+    background-color: black;
+}
+.main{
     background-image: url("assets/images/bg.jpg");
+    background-position: center center;
+    background-size: max(1139px,100vw);
+    background-repeat: no-repeat;
+    margin-top: 0%;
     height: 80vh;
+    position: relative;
 }
 
-section .box{
+.main .box{
     height: 80vh;
     width: 100%;
-    opacity: 0.2;
+    opacity: 0.69;
+    position: absolute;
+    top:0;
     background-color: black;
+}
+
+nav{
+    max-width: 60vw;
+    justify-content: space-between;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    height: 100px;
 }
 
 
