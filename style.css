@@ -5,6 +5,7 @@
 }
 body{
     background-color: black;
+    opacity: 0.69;
 }
 
 section{
@@ -19,12 +20,9 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top:20px;
-    padding-left :280px;
-    padding-right: 280px;
     position: absolute;
-    top:0;
-    left:0;
+    top:20px;
+    left: 0px;
     width: 100%;
     z-index: 10;
 }
@@ -39,42 +37,13 @@ nav div {
     align-items: center;
 }
 
-/* LANGUAGE DROPDOWN BUTTON */
-nav div button:first-child {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid #fff;
-    padding: 6px 14px;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    display: flex;
+div.hero{
+    display:flex;
     align-items: center;
-    gap: 6px;
-}
-
-/* language input inside button (hidden look) */
-nav div button:first-child input {
-    background: transparent;
-    border: none;
-    color: #fff;
-    width: 90px;
-    outline: none;
-    font-size: 14px;
-}
-
-/* SIGN IN BUTTON */
-nav div button:last-child {
-    background: rgb(229, 9, 20);   /* Netflix Red */
-    border: none;
-    padding: 7px 16px;
-    border-radius: 4px;
-    font-size: 15px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* Button hover effects */
-nav div button:last-child:hover {
-    background: rgb(200, 8, 18);
+    justify-content: center;
+    flex-direction: column;
+    color:white;
+    gap: 23px;
+    padding: 0 30px;
+    position: relative;
 }
