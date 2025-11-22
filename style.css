@@ -5,7 +5,6 @@
 }
 body{
     background-color: black;
-    opacity: 0.69;
 }
 
 section{
@@ -16,20 +15,30 @@ section{
     height: 644px;
     position: relative;
 }
+.main .box{
+    height: 644px;
+    width: 100px;
+    opacity: 0.69;
+    position:absolute;
+    top: 0;
+    background-color: black;
+}
 nav{
-    display: flex;
+    max-width: 60vw;
     justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top:20px;
-    left: 0px;
-    width: 100%;
-    z-index: 10;
+    margin:auto;
+    display: flex;
+    align-items:center;
+    height: 100px;
+
 }
 nav span svg{
-    width:100px;
+    width:140px;
     fill:#E50914;
     display:block;
+    text-decoration: solid;
+    padding-left:;
+    opacity: 1;
 }
 nav div {
     display: flex;
@@ -37,13 +46,3 @@ nav div {
     align-items: center;
 }
 
-div.hero{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color:white;
-    gap: 23px;
-    padding: 0 30px;
-    position: relative;
-}
