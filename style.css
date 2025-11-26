@@ -141,3 +141,62 @@ footer{
     cursor: pointer;
 }
 
+footer{
+    color:white;
+    max-width: 60vw;
+    margin: auto;
+}
+
+footer .questions{
+    padding: 34px 0;
+}
+
+.footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    color: white;
+}
+
+
+@media screen and (max-width:1300px){
+
+    nav{
+        max-width: 90vw;
+    }
+
+    .faq h2{
+        text-align: center;
+        font-size: 32px;
+    }
+
+    footer{
+        max-width: 90vw;
+        padding: 75px 0;
+    }
+
+    .footer-item{
+        align-items: center;
+    }
+    
+}
+
+@media screen and (max-width: 1300px){
+
+    .footer{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+    
+}
+
+.footer a{
+    font-size: 14px;
+    color: white;
+}
+
+.footer-item{
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
