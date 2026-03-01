@@ -5,6 +5,7 @@ function Navbar(){
             <div className="space-x-6 font-medium">
             <button>Home</button>
             <button>Cart  🛒</button>
+            <button>Login</button>
             </div>
         </div>
     )
