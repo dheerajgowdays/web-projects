@@ -1,0 +1,21 @@
+spring:
+  datasource:
+  url: ${DATABASE_USERNAME}
+  username: ${DATABASE_USERNAME}
+  password: ${DATABASE_PASSWORD}
+  hakari:
+    maximum-pool-size: 25
+
+data:
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    password: ${REDIS_PASSWORD}
+
+jpa:
+  show-sql: false
+
+logging:
+  level:
+    com.zomato: INFO
+    root: WARN
