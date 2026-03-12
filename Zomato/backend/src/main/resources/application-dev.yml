@@ -1,11 +1,11 @@
 spring:
   datasource:
-  url: jdbc:postgresql://localhost:5432/zomato_db
-  username: zomato_user
-  password: zomato_pass
-  hikari:
-    maximum-pool-size: 10
-    minimum-idle: 5
+    url: jdbc:postgresql://localhost:5433/zomato_db
+    username: zomato_user
+    password: zomato_pass
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
 
 jpa:
   show-sql: true

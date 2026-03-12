@@ -1,10 +1,10 @@
 spring:
   datasource:
-  url: ${DATABASE_USERNAME}
-  username: ${DATABASE_USERNAME}
-  password: ${DATABASE_PASSWORD}
-  hakari:
-    maximum-pool-size: 25
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    hikari:
+      maximum-pool-size: 25
 
 data:
   redis:
