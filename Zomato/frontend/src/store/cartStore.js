@@ -20,15 +20,29 @@ export const useCartStore = create(
         set({
           restaurantId,
           restaurantName,
-          items: existing ?
+          items: existing ? items.map(function(i){
+            if(i.menuItem.id === menuItem.id){
+              return{
+                menuItem: i.menuItem,
+                quantity: i.quantity + 1
+              };
+            }
+            else{
+              return i;
+            }
+          })
+          : items.concat([
+            {
+              menuItem: menuItem,
+              quantity: 1
+            }
+          ])
         });
       },
       removeItem: (menuItem) => {
         const { items } = get();
         const items = items.find(i => i.menuItem.id === menuItemId);
-        set({
-
-        })
+        
       },
 
       clearCart: () => set({ items:[] , restaurantId : null , restaurantName: ''}),
