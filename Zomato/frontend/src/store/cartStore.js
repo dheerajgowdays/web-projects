@@ -39,10 +39,26 @@ export const useCartStore = create(
           ])
         });
       },
-      removeItem: (menuItem) => {
+      removeItem: (menuItemId) => {
         const { items } = get();
-        const items = items.find(i => i.menuItem.id === menuItemId);
-        
+        const item = items.find(i => i.menuItem.id === menuItemId);
+        set({
+          items: item && item.quantity ===1 
+          ? items.filter(function(i){
+            return i.menuItem.id !== menuItemId;
+          })
+          : items.map(function(i){
+            if(i.menuItem.id === menuItemId){
+              return{
+                menuItem: i.menuItem,
+                quantity: i.quantity - 1
+              };
+            }
+            else{
+              return i;
+            }
+          })
+        });
       },
 
       clearCart: () => set({ items:[] , restaurantId : null , restaurantName: ''}),
