@@ -70,3 +70,36 @@ CREATE TRIGGER trigger_delivery_assignments_updated_at
     BEFORE UPDATE ON delivery_assignments
     FOR EACH row
     EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TABLE delivery_assignments (
+    id          BIGSERIAL PRIMARY KEY;
+    order_id    BIGINT NOT NULL UNIQUE REFERENCES orders(id),
+    delivery_partner_id BIGINT NOT NULL UNIQUE REFERENCES delivery_partners(id),
+
+    assigned_at         TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    accepted_at         TIMESTAMPTZ ,
+    rejected_at         TIMESTAMPTZ ,
+    picked_up_at        TIMESTAMPTZ ,
+    delivered_at        TIMESTAMPTZ ,
+
+    delivery_latitude   DECIMAL(10, 8),
+    delivery_longitude  DECIMAL(11, 8),
+
+    partner_rating      SMALLINT CHECK (partner_rating BETWEEN 1 AND 5),
+    distance_meters     INTEGER,
+    earnings_paise      INTEGER DEFAULT 0,
+
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+);
+
+CREATE INDEX idx_delivery_assignments_partner
+    ON delivery_assignments(delivery_partner_id, assigned_at DESC);
+
+CREATE INDEX  idx_delivery_assignments_order ON delivery_assignments(order_id);
+
+CREATE  TRIGGER trigger_delivery_assignments_updated_at 
+    BEFORE UPDATE ON delivery_assignments
+    FOR EACH row
+    EXECUTE FUNCTION update_updated_at_column();
+    

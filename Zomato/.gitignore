@@ -2,7 +2,7 @@
 target/
 *.class
 *.jar
-*.log
+*.logd
 .mvn/
 
 # Node / React
