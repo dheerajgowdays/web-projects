@@ -1,9 +1,9 @@
 CREATE TABLE refresh_tokens (
 
     id          BIGSERIAL PRIMARY KEY,
-    user_id     BIGINT not NULL REFERENCES users(id) ON DELETE CASCADE
+    user_id     BIGINT not NULL REFERENCES users(id) ON DELETE CASCADE,
 
-    tocken_hash     VARCHAR(64) NOT NULL UNIQUE,
+    token_hash     VARCHAR(64) NOT NULL UNIQUE,
     device_info     VARCHAR(255),
     ip_address      INET,
 
@@ -14,7 +14,7 @@ CREATE TABLE refresh_tokens (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_refresh_tokens_hash ON refresh_tokens(tocken_hash)
+CREATE INDEX idx_refresh_tokens_hash ON refresh_tokens(tokEn_hash)
     WHERE is_revoked = FALSE;
 
 CREATE INDEX idx_refresh_tokens_user ON refresh_tokens(user_id)

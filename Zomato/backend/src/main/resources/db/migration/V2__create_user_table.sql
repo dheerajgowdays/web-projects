@@ -34,6 +34,6 @@ CREATE TRIGGER trigger_users_updated_at
     FOR EACH ROW 
     EXECUTE FUNCTION update_updated_at_column();
 
-COMMENT ON TABLE users ID 'Central identity table for all platform users regardless of role';
+COMMENT ON TABLE users IS 'Central identity table for all platform users regardless of role';
 COMMENT ON COLUMN users.password_hash IS 'BCrypt hash. NULL for OAuth-only accounts';
 COMMENT ON COLUMN users.is_active IS 'Soft delete flag . Never hard-delete users';

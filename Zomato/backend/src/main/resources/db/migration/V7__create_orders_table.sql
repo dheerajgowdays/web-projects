@@ -2,7 +2,7 @@ CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,
     order_number    VARCHAR(20) not null UNIQUE,
     customer_id BIGINT NOT NULL REFERENCES users(id),
-    restaurant_id BIGINT NOT NUL REFERENCES restaurnats(id),
+    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id),
 
     delivery_address_line1 VARCHAR(255) NOT NULL,
     delivery_address_line2 VARCHAR(255) ,
@@ -20,7 +20,7 @@ CREATE TABLE orders (
     total_paise           INTEGER NOT NULL CHECK(total_paise>=0),
     coupon_code           VARCHAR(50),
 
-    status  order_status NOT NULL DEFAULT 'PENGING',
+    status  order_status NOT NULL DEFAULT 'PENDING',
     special_instructions TEXT,
     
     placed_at             TIMESTAMPTZ not null DEFAULT now(),
@@ -35,7 +35,7 @@ CREATE TABLE orders (
     cancelled_by            VARCHAR(20),
     estimated_delivery_minutes  INTEGER,
 
-    created_at   TIMESTAMPTZ not null DEFAULT now(),
+    created_at   TIMESTAMPTZ not NUll DEFAULT now(),
     updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 
     CONSTRAINT chk_total_calculation CHECK (
@@ -51,7 +51,7 @@ CREATE INDEX idx_orders_restaurant_status
 
 CREATE  INDEX idx_orders_active_status
     ON orders(status)
-    WHERE  status NOT IN ('DELIVERED', 'CANCELLED' , 'REFUNDED')
+    WHERE  status NOT IN ('DELIVERED', 'CANCELLED' , 'REFUNDED');
 
 CREATE TRIGGER tirgger_orders_updated_at
     BEFORE UPDATE ON orders
@@ -61,7 +61,7 @@ CREATE TRIGGER tirgger_orders_updated_at
 CREATE TABLE order_items(
 
     id      BIGSERIAL PRIMARY KEY,
-    order_id BIGNIT NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+    order_id BIGINT NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
     menu_items_id   BIGINT NOT NULL REFERENCES menu_items(id),
 
     item_name   VARCHAR(255) NOT NULL,

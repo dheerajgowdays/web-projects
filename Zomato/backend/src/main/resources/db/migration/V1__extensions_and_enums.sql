@@ -2,7 +2,7 @@
 
 -- This line ensures you database can generate unique IDs
 --(UUIDs) using built-in functions like uuid_generate_v4()
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- This line enables security + encryption + UUID generation features in postgresql
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 -- This line enables smart text searching and typo-tolerant queries in postgresSQL
@@ -13,7 +13,7 @@ CREATE EXTENSION IF NOT EXISTS "unaccent";
 
 -- CUSTOM ENUM TYPES
 CREATE TYPE user_role AS ENUM(
-    'CUSTORMER',
+    'CUSTOMER',
     'RESTAURANT_OWNER',
     'DELIVERY_PARTNER',
     'ADMIN'

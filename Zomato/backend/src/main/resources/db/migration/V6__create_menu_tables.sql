@@ -7,11 +7,11 @@ CREATE TABLE menu_categories (
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    UNIQUE (restaurnat_id , name)
+    UNIQUE (restaurant_id , name)
 );
 
 CREATE INDEX idx_restaurant_categories_restaurant
-    ON menu_categories(restaurnat_id)
+    ON menu_categories(restaurant_id)
     WHERE is_active = TRUE;
 
 CREATE TRIGGER trigger_menu_categories_updated_at
@@ -21,7 +21,7 @@ CREATE TRIGGER trigger_menu_categories_updated_at
 
 CREATE TABLE menu_items (
     id BIGSERIAL PRIMARY KEY,
-    restaurant_id BIGNIT NOT NULL REFERENCES restaurnats(id)ON DELETE CASCADE,
+    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id)ON DELETE CASCADE,
     category_id BIGINT NOT NULL REFERENCES menu_categories(id) on delete CASCADE,
 
     name VARCHAR(255) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE menu_items (
     price_paise INTEGER NOT NULL CHECK (price_paise > 0),
     original_price_paise INTEGER,
     food_type food_type NOT NULL DEFAULT 'VEG',
-    is_available BOOLEAN NOT NULL DEFAULT TURE,
+    is_available BOOLEAN NOT NULL DEFAULT TRUE,
     is_bestseller BOOLEAN NOT NULL DEFAULT FALSE,
     spice_level SMALLINT DEFAULT 0 CHECK (spice_level BETWEEN 0 AND 4),
     preparation_time_minutes SMALLINT,

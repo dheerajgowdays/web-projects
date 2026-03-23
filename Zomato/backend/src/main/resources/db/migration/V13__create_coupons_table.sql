@@ -10,8 +10,6 @@ CREATE TABLE coupons (
     min_order_paise     INTEGER NOT NULL DEFAULT 0,
 
     valid_from          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-
-    valid_from          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     valid_until         TIMESTAMPTZ,
 
     max_users_total     INTEGER,
@@ -19,7 +17,7 @@ CREATE TABLE coupons (
     current_users       INTEGER NOT NULL DEFAULT 0,
     restaurant_id       BIGINT REFERENCES restaurants(id) ON DELETE SET NULL,
     is_first_order_only BOOLEAN NOT NULL DEFAULT FALSE,
-    is_active           BOOLEAN NOT NULL DECIMAL TRUE,
+    is_active           BOOLEAN NOT NULL DEFAULT TRUE,
 
     created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
@@ -30,7 +28,7 @@ CREATE INDEX idx_coupons_restaurant  ON coupons( restaurant_id) WHERE restaurant
 
 CREATE TABLE coupon_usages(
     
-    id          BIGSERIAL PRIMARY KEY;
+    id          BIGSERIAL PRIMARY KEY,
     coupon_id   INTEGER NOT NULL REFERENCES coupons(id),
     user_id     BIGINT NOT NULL REFERENCES users(id),
     order_id    BIGINT NOT NULL REFERENCES orders(id),

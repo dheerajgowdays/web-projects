@@ -1,9 +1,9 @@
 CREATE TABLE cart_items(
 
-    id          BIGSERIAL PRIMARY KEY;
-    user_id     BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE;
-    restaurant_id   BIGINT NOT NULL REFERENCES restaurants(id) on DELETE CASCADE;
-    menu_item_id    BIGINT NOT NULL REFERENCES menu_items(id) On DELETE CASCADE;
+    id          BIGSERIAL PRIMARY KEY,
+    user_id     BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    restaurant_id   BIGINT NOT NULL REFERENCES restaurants(id) on DELETE CASCADE,
+    menu_item_id    BIGINT NOT NULL REFERENCES menu_items(id) On DELETE CASCADE,
     quantity        SMALLINT NOT NULL DEFAULT 1 CHECK (quantity > 0),
 
     customization_note TEXT,

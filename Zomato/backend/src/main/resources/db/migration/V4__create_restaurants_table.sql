@@ -12,6 +12,7 @@ CREATE TABLE restaurants (
     state  VARCHAR(100) NOT NULL,
     pincode VARCHAR(10) NOT NULL,
     latitude DECIMAL(10,8) NOT NULL,
+    longitude DECIMAL(11,8) NOT NULL,
     cover_image_url TEXT,
     logo_url TEXT,
     price_range SMALLINT CHECK (price_range BETWEEN 1 AND 3),
@@ -26,7 +27,7 @@ CREATE TABLE restaurants (
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
     fssai_license VARCHAR(20),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    update_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     CONSTRAINT chk_delivery_time CHECK (delivery_time_min <= delivery_time_max), 
     CONSTRAINT chk_rating_range CHECK (average_rating BETWEEN 0 AND 5)
 );
@@ -41,7 +42,7 @@ CREATE INDEX idx_restaurants_rating ON restaurants(average_rating DESC)
     WHERE is_active = TRUE AND is_approved = TRUE;
 
 CREATE INDEX idx_restaurants_name_trgm
-    ON restaurants USING GIN (name gin_trgm_ops)
+    ON restaurants USING GIN (name gin_trgm_ops);
 
 CREATE INDEX idx_restaurants_location ON restaurants(latitude, longitude);
 
@@ -51,4 +52,5 @@ CREATE TRIGGER  trigger_restaurants_updated_at
     EXECUTE FUNCTION update_updated_at_column();
 
 COMMENT ON COLUMN restaurants.min_order_paise IS 'Stored in paise (1/100 rupee) to avoid float precision issues';
-COMMENT ON COLUMN 'Denormalized form reviews. Updated by trigger on review insert/update/delete';
+COMMENT ON COLUMN restaurants.average_rating 
+IS 'Denormalized from reviews. Updated by trigger on review insert/update/delete';
