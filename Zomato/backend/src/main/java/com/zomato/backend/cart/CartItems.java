@@ -1,32 +1,45 @@
 package com.zomato.backend.cart;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import com.zomato.backend.common.entity.BaseEntity;
+import com.zomato.backend.menu.MenuItem;
+import com.zomato.backend.user.User;
+import com.zomato.backend.restaurant.Restaurant;
+
+
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
-@Table(name = "cart_items")
+@Table(name = "cart_items") 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 
-public class CartItems{
+public class CartItems extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @JoinColumn(name="user_id" , nullable=false)
+    private User user;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="restaurant_id",nullable=false)
+    private Restaurant restaurantID;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="menu_item_id",nullable=false)
+    private MenuItem menuItem;
+
+    @Column(name="quantity",nullable=false)
+    @Builder.Default
+    private Short quantity=1;
+
+    @Column(name="customization_note")
+    private String customizationNote;
 }
 

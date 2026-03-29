@@ -1,17 +1,30 @@
 package com.zomato.backend.payment;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import com.zomato.backend.common.enums.PaymentStatus;
-import com.zomato.backend.order.Order;
-import com.zomato.backend.common.enums.PaymentMethod;
-
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.zomato.backend.common.enums.PaymentMethod;
+import com.zomato.backend.common.enums.PaymentStatus;
+import com.zomato.backend.order.Order;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name="payments")
@@ -20,7 +33,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Payment{
+public class Payment {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

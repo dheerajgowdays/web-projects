@@ -1,6 +1,7 @@
 package com.zomato.backend.delivery;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import com.zomato.backend.common.entity.BaseEntity;
 import com.zomato.backend.common.enums.DeliveryPartnerStatus;
@@ -22,7 +23,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name="delivery_partners")
