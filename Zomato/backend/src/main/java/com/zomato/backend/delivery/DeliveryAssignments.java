@@ -1,9 +1,9 @@
 package com.zomato.backend.delivery;
 
-import java.time.LocalDateTime;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
-import com.zomato.backend.delivery.DeliveryPartner;
+import com.zomato.backend.common.entity.BaseEntity;
 import com.zomato.backend.order.Order;
 
 import jakarta.persistence.Column;
@@ -20,6 +20,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name="delivery_assignments")
@@ -28,7 +29,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class DeliveryAssignments{
+public class DeliveryAssignments extends  BaseEntity{
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

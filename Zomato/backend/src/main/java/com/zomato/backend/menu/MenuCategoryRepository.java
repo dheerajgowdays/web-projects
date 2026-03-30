@@ -1,14 +1,14 @@
 package com.zomato.backend.menu;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
 @Repository
-public interface MenuCategoryRepository extends JpaRepository<MenuCategory, Long> {
+public interface MenuCategoryRepository extends JpaRepository<MenuCategory, Long>{
 
-    List<MenuCategory> findByRestaurantIdAndIsActiveTrueOrderByDisplayOrderAsc(Long restaurantId);
+    List<MenuCategory> findByRestaurantIdAndIsActiveTrueOrderByDisplayOrderAsc
+    (Long restaurantId);
 
-    boolean existsByRestaurantIdAndName(Long restaurantId, String name);
+    boolean existsByRestaurantIdAndNameIgnoreCase(Long restaurantId, String name);
 }
