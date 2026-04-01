@@ -209,7 +209,7 @@ public class AuthService {
         refreshTokenRepository.save(token);
     }
 
-    private String hashToken(String token) {
+    private String  hashToken(String token) {
         // SHA-256 hash of the token string
         // Same token always produces same hash — deterministic lookup
         // But hash cannot be reversed to get the original token
