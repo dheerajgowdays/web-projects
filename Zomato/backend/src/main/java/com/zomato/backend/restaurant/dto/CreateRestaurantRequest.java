@@ -23,6 +23,18 @@ public class CreateRestaurantRequest {
     @Email(message = "Invalid email format")
     private String email;
 
+    @NotBlank(message="Address line 1 is required")
+    private String addressLine1;
+
+    private String addressLine2;
+    private String landmark;
+
+    @NotBlank(message="City is required")
+    private String city;
+
+    @NotBlank(message="State is required")
+    private String state;
+
     
 
 }
