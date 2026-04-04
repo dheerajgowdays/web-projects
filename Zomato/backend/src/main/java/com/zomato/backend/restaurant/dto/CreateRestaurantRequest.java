@@ -1,10 +1,13 @@
 package com.zomato.backend.restaurant.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -53,5 +56,22 @@ public class CreateRestaurantRequest {
     @DecimalMax(value="180.0",message="Invalid longitude")
     private BigDecimal longitude;
 
-    @
+    @Min(value=1,message="Price range must be 1,2, or 3")
+    @Max(value=3,message="Price range must be 1,2, or 3")
+    private Short priceRange;
+
+    @Min(value=0,message="Minimum order cannot be negative")
+    private Integer minOrderPaise = 0;
+
+    @Min(value=0,message="Delivery fee cannot be negative")
+    private Integer deliveryFeePaise = 0;
+
+    @Min(value=1,message="Maximum delivery time must be at least 1 minute")
+    @Max(value=180,message="Delivery time cannot exceed 180 minutes")
+    private Short deliveryTimeMax = 45;
+
+    @Size(max=20,message="FSSAI license cannot exceed 20 characters")
+    private String fssaiLicense;
+
+    private List<Integer> cuisineIds;
 }
