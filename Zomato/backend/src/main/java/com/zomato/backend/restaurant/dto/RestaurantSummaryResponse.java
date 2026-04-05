@@ -15,4 +15,5 @@ public class RestaurantSummaryResponse {
     private BigDecimal averageRating;
     private Integer totalRatings;
     private Short deliveryTimeMin;
+    private Integer deliveryTimeMax;
 }
