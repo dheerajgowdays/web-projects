@@ -16,4 +16,5 @@ public class RestaurantSummaryResponse {
     private Integer totalRatings;
     private Short deliveryTimeMin;
     private Integer deliveryTimeMax;
+    private Interger deliveryMember;
 }
