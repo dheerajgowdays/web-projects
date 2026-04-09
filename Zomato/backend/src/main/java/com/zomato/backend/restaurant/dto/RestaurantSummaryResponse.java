@@ -14,5 +14,5 @@ public class RestaurantSummaryResponse {
     private String logoUrl;
     private BigDecimal averageRating;
     private Integer totalRatings;
-    private Short deliveryTimeMin;
+    
 }
