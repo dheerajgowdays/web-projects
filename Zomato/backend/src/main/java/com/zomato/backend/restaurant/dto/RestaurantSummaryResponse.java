@@ -13,6 +13,4 @@ public class RestaurantSummaryResponse {
     private String coverImageUrl;
     private String logoUrl;
     private BigDecimal averageRating;
-    private Integer totalRatings;
-    
 }
